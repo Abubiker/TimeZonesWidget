@@ -2,3 +2,4 @@
 build/
 *.xcuserstate
 TimeZonesWidget.xcodeproj/xcuserdata/
+dist/

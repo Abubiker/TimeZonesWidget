@@ -60,9 +60,20 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
 
     private var statusItem: NSStatusItem?
     private weak var mainWindow: NSWindow?
+    private var settingsWindowController: NSWindowController?
 
     private lazy var statusMenu: NSMenu = {
         let menu = NSMenu()
+
+        let aboutItem = NSMenuItem(
+            title: "About",
+            action: #selector(showAbout),
+            keyEquivalent: ""
+        )
+        aboutItem.target = self
+        menu.addItem(aboutItem)
+
+        menu.addItem(.separator())
 
         let settingsItem = NSMenuItem(
             title: "Settings",
@@ -178,13 +189,57 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
     }
 
     @objc private func openSettings() {
-        showInDock()
+        let controller = makeSettingsWindowControllerIfNeeded()
+        controller.showWindow(nil)
+        controller.window?.makeKeyAndOrderFront(nil)
         NSApp.activate(ignoringOtherApps: true)
-        NSApp.sendAction(Selector(("showSettingsWindow:")), to: nil, from: nil)
+    }
+
+    @objc private func showAbout() {
+        NSApp.activate(ignoringOtherApps: true)
+
+        let description = """
+        A simple app for tracking time across multiple time zones.
+        Created by: Dmitry Marchenko (@dmitrobuber)
+        """
+
+        let shortVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? ""
+        let buildVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String ?? ""
+
+        NSApp.orderFrontStandardAboutPanel(options: [
+            .applicationName: "TimeZonesWidget",
+            .applicationVersion: shortVersion,
+            .version: buildVersion,
+            .credits: NSAttributedString(string: description)
+        ])
     }
 
     @objc private func quitApp() {
         NSApp.terminate(nil)
+    }
+
+    private func makeSettingsWindowControllerIfNeeded() -> NSWindowController {
+        if let controller = settingsWindowController {
+            return controller
+        }
+
+        let settingsRoot = SettingsView()
+            .environmentObject(AppGroupManager.shared)
+            .modifier(AppThemeApplier(theme: AppGroupManager.shared.config.appTheme))
+
+        let hostingController = NSHostingController(rootView: settingsRoot)
+
+        let window = NSWindow(contentViewController: hostingController)
+        window.title = "TimeZonesWidget Settings"
+        window.titleVisibility = .visible
+        window.styleMask = [.titled, .closable, .miniaturizable]
+        window.setContentSize(NSSize(width: 420, height: 320))
+        window.center()
+        window.isReleasedWhenClosed = false
+
+        let controller = NSWindowController(window: window)
+        settingsWindowController = controller
+        return controller
     }
 }
 
