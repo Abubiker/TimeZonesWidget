@@ -86,6 +86,15 @@ private struct WidgetZoneRow: View {
     let date: Date
     let compact: Bool
 
+    private static let timeFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.locale = .autoupdatingCurrent
+        formatter.calendar = .autoupdatingCurrent
+        formatter.timeZone = TimeZone(secondsFromGMT: 0)
+        formatter.dateFormat = "HH:mm"
+        return formatter
+    }()
+
     var body: some View {
         VStack(alignment: .leading, spacing: compact ? 2 : 4) {
             HStack(spacing: 6) {
@@ -98,22 +107,20 @@ private struct WidgetZoneRow: View {
             }
 
             HStack {
-                Text(date, formatter: formatter(for: zone))
+                Text(formattedTime(for: zone, at: date))
                     .font(compact ? .headline : .title3)
                     .monospacedDigit()
                 Spacer()
-                Text(zone.offsetString())
+                Text(zone.offsetString(at: date))
                     .font(.caption2)
                     .foregroundStyle(.secondary)
             }
         }
     }
 
-    private func formatter(for zone: SavedTimeZone) -> DateFormatter {
-        let formatter = DateFormatter()
-        formatter.timeZone = zone.timeZone
-        formatter.dateStyle = .none
-        formatter.timeStyle = .short
-        return formatter
+    private func formattedTime(for zone: SavedTimeZone, at date: Date) -> String {
+        // Render city-local wall clock from absolute date; formatter stays in GMT to avoid host-timezone override.
+        let adjusted = date.addingTimeInterval(TimeInterval(zone.timeZone.secondsFromGMT(for: date)))
+        return Self.timeFormatter.string(from: adjusted)
     }
 }

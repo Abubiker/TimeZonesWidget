@@ -25,9 +25,9 @@ struct SavedTimeZone: Identifiable, Codable, Equatable {
         Self.flagEmoji(for: identifier)
     }
     
-    func offsetString(relativeTo reference: TimeZone = .autoupdatingCurrent) -> String {
-        let secondsFromGMT = timeZone.secondsFromGMT()
-        let referenceSeconds = reference.secondsFromGMT()
+    func offsetString(at date: Date = Date(), relativeTo reference: TimeZone = .autoupdatingCurrent) -> String {
+        let secondsFromGMT = timeZone.secondsFromGMT(for: date)
+        let referenceSeconds = reference.secondsFromGMT(for: date)
         let diff = secondsFromGMT - referenceSeconds
         
         let hours = diff / 3600
@@ -38,6 +38,10 @@ struct SavedTimeZone: Identifiable, Codable, Equatable {
         } else {
             return "\(hours)HRS"
         }
+    }
+
+    func offsetString(relativeTo reference: TimeZone = .autoupdatingCurrent) -> String {
+        offsetString(at: Date(), relativeTo: reference)
     }
 }
 

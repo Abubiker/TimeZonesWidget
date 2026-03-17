@@ -15,7 +15,7 @@ targets:
         CFBundleName: TimeZonesWidget
         CFBundleIdentifier: com.yourname.TimeZonesWidget
         CFBundleShortVersionString: "1.4"
-        CFBundleVersion: "5"
+        CFBundleVersion: "6"
     settings:
       ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
     entitlements:
@@ -49,7 +49,7 @@ targets:
         CFBundleName: TimeZonesWidgetExtension
         CFBundleIdentifier: $(PRODUCT_BUNDLE_IDENTIFIER)
         CFBundleShortVersionString: "1.4"
-        CFBundleVersion: "5"
+        CFBundleVersion: "6"
         NSSupportsLiveActivities: false
         NSExtension:
           NSExtensionPointIdentifier: com.apple.widgetkit-extension
