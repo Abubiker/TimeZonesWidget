@@ -1,0 +1,67 @@
+name: TimeZonesWidget
+options:
+  bundleIdPrefix: com.yourname
+targets:
+  TimeZonesWidget:
+    type: application
+    platform: macOS
+    deploymentTarget: "13.0"
+    sources:
+      - MainApp
+      - Shared
+    info:
+      path: MainApp/Info.plist
+      properties:
+        CFBundleName: TimeZonesWidget
+        CFBundleIdentifier: com.yourname.TimeZonesWidget
+        CFBundleShortVersionString: "1.4"
+        CFBundleVersion: "5"
+    settings:
+      ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+    entitlements:
+      path: MainApp/App.entitlements
+      properties:
+        com.apple.security.app-sandbox: true
+    dependencies:
+      - target: TimeZonesWidgetExtension
+        embed: true
+  TimeZonesWidgetTests:
+    type: bundle.unit-test
+    platform: macOS
+    deploymentTarget: "13.0"
+    sources:
+      - Tests
+    settings:
+      GENERATE_INFOPLIST_FILE: YES
+    dependencies:
+      - target: TimeZonesWidget
+  TimeZonesWidgetExtension:
+    type: app-extension
+    platform: macOS
+    deploymentTarget: "14.0"
+    bundleId: com.yourname.TimeZonesWidget.TimeZonesWidgetExtension
+    sources:
+      - Widget
+      - Shared
+    info:
+      path: Widget/Info.plist
+      properties:
+        CFBundleName: TimeZonesWidgetExtension
+        CFBundleIdentifier: $(PRODUCT_BUNDLE_IDENTIFIER)
+        CFBundleShortVersionString: "1.4"
+        CFBundleVersion: "5"
+        NSSupportsLiveActivities: false
+        NSExtension:
+          NSExtensionPointIdentifier: com.apple.widgetkit-extension
+    entitlements:
+      path: Widget/Extension.entitlements
+      properties:
+        com.apple.security.app-sandbox: true
+schemes:
+  TimeZonesWidget:
+    build:
+      targets:
+        TimeZonesWidget: all
+    test:
+      targets:
+        - TimeZonesWidgetTests

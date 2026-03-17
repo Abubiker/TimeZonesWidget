@@ -3,136 +3,449 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 77;
+	objectVersion = 63;
 	objects = {
 
-/* Begin PBXFileReference section */
-		03A30FB42F587B79009C666B /* TimeZonesWidget.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimeZonesWidget.app; sourceTree = BUILT_PRODUCTS_DIR; };
-/* End PBXFileReference section */
+/* Begin PBXBuildFile section */
+		00A805AECB4DE17201B42AB4 /* AppGroupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FD1A748D7373A065A294AC /* AppGroupManager.swift */; };
+		0675BDE84AAE5E3359139A1A /* WidgetTimeZoneStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B6113CB2FAE020CDAF632A /* WidgetTimeZoneStore.swift */; };
+		109A034F0BAC6984E99A54F3 /* TimeZonesWidgetConfigurationIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627A0BC19A8601E457530C21 /* TimeZonesWidgetConfigurationIntent.swift */; };
+		153B2D7AE86ED6BCC0729EF7 /* AppGroupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FD1A748D7373A065A294AC /* AppGroupManager.swift */; };
+		298B2FC4AFB8037809195E33 /* TimeZonesWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D391D6BB1C1CE668FB79769 /* TimeZonesWidget.swift */; };
+		325E00E35EE9571E7526BE7C /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D03BF51DCEF728A1D0BC665 /* SettingsView.swift */; };
+		38102DE53BED123C90BAF550 /* TimeZonesWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6B74B50F7FB52372660057 /* TimeZonesWidgetView.swift */; };
+		51CD3F19DC5715DB07F3B76F /* TimeZonesWidgetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 468A28D89470FEF873C1959A /* TimeZonesWidgetTests.swift */; };
+		5B74915447D77C36C6D06434 /* TimeZonesWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = AE73607C1ABCB9BFD48C48FF /* TimeZonesWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		6BFA7F07594BBE4F96959320 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84C0A146A088ACC808936919 /* Assets.xcassets */; };
+		7E186F415D1AD01BE1E46DB2 /* TimeZonesWidgetApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E853081D89B6AE132E63CCAA /* TimeZonesWidgetApp.swift */; };
+		86BF44CFADCFCA3565B30DBB /* TimeZonesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A963F5276E66455D4CF571 /* TimeZonesProvider.swift */; };
+		8D4B631ACA81D6E3F79F5365 /* TimeZoneRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E344D54114F2DAB827A1FE /* TimeZoneRowView.swift */; };
+		957319F76D814004329A8C7F /* ClipboardHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDAA19361DDD7F16588CF0AA /* ClipboardHelper.swift */; };
+		9864B1FFC90FEEF8EAD6DFD6 /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329DC2087DFB9319213B86DE /* AppConfig.swift */; };
+		AE1E73E80285704C75F62AA9 /* AddTimeZoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5875FD0050B27DCDBB6EAC /* AddTimeZoneView.swift */; };
+		C1B7B01607BDB6EAE12FCA2D /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329DC2087DFB9319213B86DE /* AppConfig.swift */; };
+		D3C8C3E718CCED5C776FD730 /* SavedTimeZone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067E1C1C6C1AD7ABFDFB222B /* SavedTimeZone.swift */; };
+		D58FD0241E4A95BBFD569885 /* TimeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC69599B9A306B5BBC5F976 /* TimeManager.swift */; };
+		E71A347E71D370775A32CF40 /* SavedTimeZone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067E1C1C6C1AD7ABFDFB222B /* SavedTimeZone.swift */; };
+		EC8C942E215F00BFDACAA991 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323B78D0179FDD33E96203C2 /* ContentView.swift */; };
+/* End PBXBuildFile section */
 
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		03A30FB62F587B79009C666B /* TimeZonesWidget */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = TimeZonesWidget;
-			sourceTree = "<group>";
+/* Begin PBXContainerItemProxy section */
+		52E98E5FC5F435D0CD9D6F16 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9B1396AC026DC5A068E7F0FF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9B059B402A8B7006F7DF6688;
+			remoteInfo = TimeZonesWidgetExtension;
 		};
-/* End PBXFileSystemSynchronizedRootGroup section */
+		FBEF45068AF64093048F5086 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9B1396AC026DC5A068E7F0FF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 94E16C950456AFBC3C297EDC;
+			remoteInfo = TimeZonesWidget;
+		};
+/* End PBXContainerItemProxy section */
 
-/* Begin PBXFrameworksBuildPhase section */
-		03A30FB12F587B79009C666B /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
+/* Begin PBXCopyFilesBuildPhase section */
+		71A141658D6B29E0FD78F063 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
 			files = (
+				5B74915447D77C36C6D06434 /* TimeZonesWidgetExtension.appex in Embed Foundation Extensions */,
 			);
+			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-/* End PBXFrameworksBuildPhase section */
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		067E1C1C6C1AD7ABFDFB222B /* SavedTimeZone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedTimeZone.swift; sourceTree = "<group>"; };
+		1B4288E9A157884ADF89FD3C /* TimeZonesWidget.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimeZonesWidget.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D391D6BB1C1CE668FB79769 /* TimeZonesWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeZonesWidget.swift; sourceTree = "<group>"; };
+		323B78D0179FDD33E96203C2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		329DC2087DFB9319213B86DE /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
+		3D03BF51DCEF728A1D0BC665 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		3D6B74B50F7FB52372660057 /* TimeZonesWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeZonesWidgetView.swift; sourceTree = "<group>"; };
+		468A28D89470FEF873C1959A /* TimeZonesWidgetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeZonesWidgetTests.swift; sourceTree = "<group>"; };
+		49FD1A748D7373A065A294AC /* AppGroupManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGroupManager.swift; sourceTree = "<group>"; };
+		51E344D54114F2DAB827A1FE /* TimeZoneRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeZoneRowView.swift; sourceTree = "<group>"; };
+		627A0BC19A8601E457530C21 /* TimeZonesWidgetConfigurationIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeZonesWidgetConfigurationIntent.swift; sourceTree = "<group>"; };
+		65B6113CB2FAE020CDAF632A /* WidgetTimeZoneStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetTimeZoneStore.swift; sourceTree = "<group>"; };
+		679EE54345C8F21F7DB4D55C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		70FF9902AD22F07E34BBBD62 /* TimeZonesWidgetTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TimeZonesWidgetTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		84C0A146A088ACC808936919 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A3A963F5276E66455D4CF571 /* TimeZonesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeZonesProvider.swift; sourceTree = "<group>"; };
+		AB56EDAB9753AB968C3BC6F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		ADC69599B9A306B5BBC5F976 /* TimeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeManager.swift; sourceTree = "<group>"; };
+		AE73607C1ABCB9BFD48C48FF /* TimeZonesWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = TimeZonesWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		AEB49F0BD29A2F2D0FF1B210 /* App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = App.entitlements; sourceTree = "<group>"; };
+		BD5875FD0050B27DCDBB6EAC /* AddTimeZoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTimeZoneView.swift; sourceTree = "<group>"; };
+		C8999C91FC0DBFEBFED6EBB7 /* Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Extension.entitlements; sourceTree = "<group>"; };
+		E853081D89B6AE132E63CCAA /* TimeZonesWidgetApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeZonesWidgetApp.swift; sourceTree = "<group>"; };
+		EDAA19361DDD7F16588CF0AA /* ClipboardHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipboardHelper.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
 
 /* Begin PBXGroup section */
-		03A30FAB2F587B79009C666B = {
+		35FB5F4C2EF222E25A1A02B1 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				03A30FB62F587B79009C666B /* TimeZonesWidget */,
-				03A30FB52F587B79009C666B /* Products */,
+				1B4288E9A157884ADF89FD3C /* TimeZonesWidget.app */,
+				AE73607C1ABCB9BFD48C48FF /* TimeZonesWidgetExtension.appex */,
+				70FF9902AD22F07E34BBBD62 /* TimeZonesWidgetTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		400FE56BEC3273958456882A /* App */ = {
+			isa = PBXGroup;
+			children = (
+				ADC69599B9A306B5BBC5F976 /* TimeManager.swift */,
+				A597394D2B884828CEBD2BEF /* Utils */,
+				D26852FDF4AE4E11DEB3F6D2 /* Views */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		670E5FB6F70F57BD52C23B37 /* Widget */ = {
+			isa = PBXGroup;
+			children = (
+				C8999C91FC0DBFEBFED6EBB7 /* Extension.entitlements */,
+				AB56EDAB9753AB968C3BC6F5 /* Info.plist */,
+				A3A963F5276E66455D4CF571 /* TimeZonesProvider.swift */,
+				2D391D6BB1C1CE668FB79769 /* TimeZonesWidget.swift */,
+				627A0BC19A8601E457530C21 /* TimeZonesWidgetConfigurationIntent.swift */,
+				3D6B74B50F7FB52372660057 /* TimeZonesWidgetView.swift */,
+				65B6113CB2FAE020CDAF632A /* WidgetTimeZoneStore.swift */,
+			);
+			path = Widget;
+			sourceTree = "<group>";
+		};
+		6D72E5F2980EC99296F755A8 /* MainApp */ = {
+			isa = PBXGroup;
+			children = (
+				AEB49F0BD29A2F2D0FF1B210 /* App.entitlements */,
+				84C0A146A088ACC808936919 /* Assets.xcassets */,
+				679EE54345C8F21F7DB4D55C /* Info.plist */,
+				E853081D89B6AE132E63CCAA /* TimeZonesWidgetApp.swift */,
+				400FE56BEC3273958456882A /* App */,
+			);
+			path = MainApp;
+			sourceTree = "<group>";
+		};
+		7298ABB0D4B17117AB4CA4B5 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				329DC2087DFB9319213B86DE /* AppConfig.swift */,
+				067E1C1C6C1AD7ABFDFB222B /* SavedTimeZone.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		9F071D79187B8F81762558A7 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				49FD1A748D7373A065A294AC /* AppGroupManager.swift */,
+				7298ABB0D4B17117AB4CA4B5 /* Models */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		A597394D2B884828CEBD2BEF /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				EDAA19361DDD7F16588CF0AA /* ClipboardHelper.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		B641A0A46B0DB5402D98478D = {
+			isa = PBXGroup;
+			children = (
+				6D72E5F2980EC99296F755A8 /* MainApp */,
+				9F071D79187B8F81762558A7 /* Shared */,
+				DCD1B35B50F1A4532194286A /* Tests */,
+				670E5FB6F70F57BD52C23B37 /* Widget */,
+				35FB5F4C2EF222E25A1A02B1 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		03A30FB52F587B79009C666B /* Products */ = {
+		D26852FDF4AE4E11DEB3F6D2 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				03A30FB42F587B79009C666B /* TimeZonesWidget.app */,
+				BD5875FD0050B27DCDBB6EAC /* AddTimeZoneView.swift */,
+				323B78D0179FDD33E96203C2 /* ContentView.swift */,
+				3D03BF51DCEF728A1D0BC665 /* SettingsView.swift */,
+				51E344D54114F2DAB827A1FE /* TimeZoneRowView.swift */,
 			);
-			name = Products;
+			path = Views;
+			sourceTree = "<group>";
+		};
+		DCD1B35B50F1A4532194286A /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				468A28D89470FEF873C1959A /* TimeZonesWidgetTests.swift */,
+			);
+			path = Tests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		03A30FB32F587B79009C666B /* TimeZonesWidget */ = {
+		94E16C950456AFBC3C297EDC /* TimeZonesWidget */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 03A30FBF2F587B7A009C666B /* Build configuration list for PBXNativeTarget "TimeZonesWidget" */;
+			buildConfigurationList = C88CC63FF64BD64081C24CB1 /* Build configuration list for PBXNativeTarget "TimeZonesWidget" */;
 			buildPhases = (
-				03A30FB02F587B79009C666B /* Sources */,
-				03A30FB12F587B79009C666B /* Frameworks */,
-				03A30FB22F587B79009C666B /* Resources */,
+				742867A4B7509CA8F48CC2F9 /* Sources */,
+				C26057E9F0B56EEBE50F0C86 /* Resources */,
+				71A141658D6B29E0FD78F063 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				03A30FB62F587B79009C666B /* TimeZonesWidget */,
+				9B83F99E15A378A38C81AB60 /* PBXTargetDependency */,
 			);
 			name = TimeZonesWidget;
 			packageProductDependencies = (
 			);
 			productName = TimeZonesWidget;
-			productReference = 03A30FB42F587B79009C666B /* TimeZonesWidget.app */;
+			productReference = 1B4288E9A157884ADF89FD3C /* TimeZonesWidget.app */;
 			productType = "com.apple.product-type.application";
+		};
+		9B059B402A8B7006F7DF6688 /* TimeZonesWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 05BE7057B677681660322FF5 /* Build configuration list for PBXNativeTarget "TimeZonesWidgetExtension" */;
+			buildPhases = (
+				41A7AD500CC8141DAB5CDFF7 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TimeZonesWidgetExtension;
+			packageProductDependencies = (
+			);
+			productName = TimeZonesWidgetExtension;
+			productReference = AE73607C1ABCB9BFD48C48FF /* TimeZonesWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		F8BAC1FDF2B22F1DD33ED435 /* TimeZonesWidgetTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E95AAA8451D42CD33DFE4058 /* Build configuration list for PBXNativeTarget "TimeZonesWidgetTests" */;
+			buildPhases = (
+				71AD1628C91D8126D9F79445 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4E9A3794BAA74E9F228BEBF1 /* PBXTargetDependency */,
+			);
+			name = TimeZonesWidgetTests;
+			packageProductDependencies = (
+			);
+			productName = TimeZonesWidgetTests;
+			productReference = 70FF9902AD22F07E34BBBD62 /* TimeZonesWidgetTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		03A30FAC2F587B79009C666B /* Project object */ = {
+		9B1396AC026DC5A068E7F0FF /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 2630;
+				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 2630;
-				TargetAttributes = {
-					03A30FB32F587B79009C666B = {
-						CreatedOnToolsVersion = 26.3;
-					};
-				};
 			};
-			buildConfigurationList = 03A30FAF2F587B79009C666B /* Build configuration list for PBXProject "TimeZonesWidget" */;
+			buildConfigurationList = 7BC097FEA73DA477E6A2F76A /* Build configuration list for PBXProject "TimeZonesWidget" */;
+			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				en,
 				Base,
+				en,
 			);
-			mainGroup = 03A30FAB2F587B79009C666B;
+			mainGroup = B641A0A46B0DB5402D98478D;
 			minimizedProjectReferenceProxies = 1;
-			preferredProjectObjectVersion = 77;
-			productRefGroup = 03A30FB52F587B79009C666B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				03A30FB32F587B79009C666B /* TimeZonesWidget */,
+				94E16C950456AFBC3C297EDC /* TimeZonesWidget */,
+				9B059B402A8B7006F7DF6688 /* TimeZonesWidgetExtension */,
+				F8BAC1FDF2B22F1DD33ED435 /* TimeZonesWidgetTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		03A30FB22F587B79009C666B /* Resources */ = {
+		C26057E9F0B56EEBE50F0C86 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6BFA7F07594BBE4F96959320 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		03A30FB02F587B79009C666B /* Sources */ = {
+		41A7AD500CC8141DAB5CDFF7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9864B1FFC90FEEF8EAD6DFD6 /* AppConfig.swift in Sources */,
+				153B2D7AE86ED6BCC0729EF7 /* AppGroupManager.swift in Sources */,
+				D3C8C3E718CCED5C776FD730 /* SavedTimeZone.swift in Sources */,
+				86BF44CFADCFCA3565B30DBB /* TimeZonesProvider.swift in Sources */,
+				298B2FC4AFB8037809195E33 /* TimeZonesWidget.swift in Sources */,
+				109A034F0BAC6984E99A54F3 /* TimeZonesWidgetConfigurationIntent.swift in Sources */,
+				38102DE53BED123C90BAF550 /* TimeZonesWidgetView.swift in Sources */,
+				0675BDE84AAE5E3359139A1A /* WidgetTimeZoneStore.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		71AD1628C91D8126D9F79445 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				51CD3F19DC5715DB07F3B76F /* TimeZonesWidgetTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		742867A4B7509CA8F48CC2F9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AE1E73E80285704C75F62AA9 /* AddTimeZoneView.swift in Sources */,
+				C1B7B01607BDB6EAE12FCA2D /* AppConfig.swift in Sources */,
+				00A805AECB4DE17201B42AB4 /* AppGroupManager.swift in Sources */,
+				957319F76D814004329A8C7F /* ClipboardHelper.swift in Sources */,
+				EC8C942E215F00BFDACAA991 /* ContentView.swift in Sources */,
+				E71A347E71D370775A32CF40 /* SavedTimeZone.swift in Sources */,
+				325E00E35EE9571E7526BE7C /* SettingsView.swift in Sources */,
+				D58FD0241E4A95BBFD569885 /* TimeManager.swift in Sources */,
+				8D4B631ACA81D6E3F79F5365 /* TimeZoneRowView.swift in Sources */,
+				7E186F415D1AD01BE1E46DB2 /* TimeZonesWidgetApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		4E9A3794BAA74E9F228BEBF1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 94E16C950456AFBC3C297EDC /* TimeZonesWidget */;
+			targetProxy = FBEF45068AF64093048F5086 /* PBXContainerItemProxy */;
+		};
+		9B83F99E15A378A38C81AB60 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9B059B402A8B7006F7DF6688 /* TimeZonesWidgetExtension */;
+			targetProxy = 52E98E5FC5F435D0CD9D6F16 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
-		03A30FBD2F587B7A009C666B /* Debug */ = {
+		07F0790180FF0551A987047C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yourname.TimeZonesWidgetTests;
+				SDKROOT = macosx;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TimeZonesWidget.app/Contents/MacOS/TimeZonesWidget";
+			};
+			name = Debug;
+		};
+		3BA18439B2A84F5D9679010F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Widget/Extension.entitlements;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
+				INFOPLIST_FILE = Widget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yourname.TimeZonesWidget.TimeZonesWidgetExtension;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		461B192B10D2F4046FA80F92 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Widget/Extension.entitlements;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
+				INFOPLIST_FILE = Widget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yourname.TimeZonesWidget.TimeZonesWidgetExtension;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		5F9050676FB54E3218BAF2CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yourname.TimeZonesWidgetTests;
+				SDKROOT = macosx;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TimeZonesWidget.app/Contents/MacOS/TimeZonesWidget";
+			};
+			name = Release;
+		};
+		6C5CB245224939532933277F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MainApp/App.entitlements;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
+				INFOPLIST_FILE = MainApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yourname.TimeZonesWidget;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		83FE55CADF28959B894367F2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
@@ -159,18 +472,18 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = 9T333Y24XP;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
 					"$(inherited)",
+					"DEBUG=1",
 				);
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -178,25 +491,44 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 26.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
-		03A30FBE2F587B7A009C666B /* Release */ = {
+		D2E2AE9BD43CE5AB1A12A77D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MainApp/App.entitlements;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
+				INFOPLIST_FILE = MainApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yourname.TimeZonesWidget;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		D76043B40C864F8D25C2A664 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
@@ -223,12 +555,12 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 9T333Y24XP;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -236,75 +568,13 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 26.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
-			};
-			name = Release;
-		};
-		03A30FC02F587B7A009C666B /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 9T333Y24XP;
-				ENABLE_APP_SANDBOX = YES;
-				ENABLE_HARDENED_RUNTIME = YES;
-				ENABLE_PREVIEWS = YES;
-				ENABLE_USER_SELECTED_FILES = readonly;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = dmitrobuber.TimeZonesWidget;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				REGISTER_APP_GROUPS = YES;
-				STRING_CATALOG_GENERATE_SYMBOLS = YES;
-				SWIFT_APPROACHABLE_CONCURRENCY = YES;
-				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
-			};
-			name = Debug;
-		};
-		03A30FC12F587B7A009C666B /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 9T333Y24XP;
-				ENABLE_APP_SANDBOX = YES;
-				ENABLE_HARDENED_RUNTIME = YES;
-				ENABLE_PREVIEWS = YES;
-				ENABLE_USER_SELECTED_FILES = readonly;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = dmitrobuber.TimeZonesWidget;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				REGISTER_APP_GROUPS = YES;
-				STRING_CATALOG_GENERATE_SYMBOLS = YES;
-				SWIFT_APPROACHABLE_CONCURRENCY = YES;
-				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
@@ -312,25 +582,43 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		03A30FAF2F587B79009C666B /* Build configuration list for PBXProject "TimeZonesWidget" */ = {
+		05BE7057B677681660322FF5 /* Build configuration list for PBXNativeTarget "TimeZonesWidgetExtension" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				03A30FBD2F587B7A009C666B /* Debug */,
-				03A30FBE2F587B7A009C666B /* Release */,
+				461B192B10D2F4046FA80F92 /* Debug */,
+				3BA18439B2A84F5D9679010F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
-		03A30FBF2F587B7A009C666B /* Build configuration list for PBXNativeTarget "TimeZonesWidget" */ = {
+		7BC097FEA73DA477E6A2F76A /* Build configuration list for PBXProject "TimeZonesWidget" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				03A30FC02F587B7A009C666B /* Debug */,
-				03A30FC12F587B7A009C666B /* Release */,
+				83FE55CADF28959B894367F2 /* Debug */,
+				D76043B40C864F8D25C2A664 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
+		};
+		C88CC63FF64BD64081C24CB1 /* Build configuration list for PBXNativeTarget "TimeZonesWidget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6C5CB245224939532933277F /* Debug */,
+				D2E2AE9BD43CE5AB1A12A77D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		E95AAA8451D42CD33DFE4058 /* Build configuration list for PBXNativeTarget "TimeZonesWidgetTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				07F0790180FF0551A987047C /* Debug */,
+				5F9050676FB54E3218BAF2CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 03A30FAC2F587B79009C666B /* Project object */;
+	rootObject = 9B1396AC026DC5A068E7F0FF /* Project object */;
 }
