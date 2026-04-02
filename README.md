@@ -6,6 +6,7 @@ Simple macOS app and desktop widget for tracking time across multiple time zones
 
 - Latest release: [Download from Releases](https://github.com/Abubiker/TimeZonesWidget/releases/latest)
 - Current installer (v1.4.6): [TimeZonesWidget-1.4-6.dmg](https://github.com/Abubiker/TimeZonesWidget/releases/download/v1.4.6/TimeZonesWidget-1.4-6.dmg)
+- SHA256 (`TimeZonesWidget-1.4-6.dmg`): `00601ad174f7a57a3806549aaad54714e75f346278ea2e9010e598922f43d47a`
 
 ## Install
 
