@@ -3,49 +3,20 @@ import SwiftUI
 struct AddTimeZoneView: View {
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var appGroupManager: AppGroupManager
-    @EnvironmentObject var timeManager: TimeManager
-    
+
     @State private var searchText = ""
     @State private var hoveredIdentifier: String?
     @State private var selectedIdentifier: String?
-    
-    private var sortedIdentifiers: [String] {
-        let now = timeManager.currentTime
-        return TimeZone.knownTimeZoneIdentifiers
-            .filter { TimeZone(identifier: $0) != nil }
-            .sorted { lhs, rhs in
-                let lhsOffset = TimeZone(identifier: lhs)?.secondsFromGMT(for: now) ?? Int.max
-                let rhsOffset = TimeZone(identifier: rhs)?.secondsFromGMT(for: now) ?? Int.max
-                if lhsOffset != rhsOffset {
-                    return lhsOffset < rhsOffset
-                }
+    @State private var now = Date()
+    @State private var sortedIdentifiers: [String] = []
 
-                let lhsCity = formatIdentifier(lhs)
-                let rhsCity = formatIdentifier(rhs)
-                if lhsCity != rhsCity {
-                    return lhsCity < rhsCity
-                }
-
-                return lhs < rhs
-            }
-    }
+    private let refreshTimer = Timer.publish(every: 60, tolerance: 2, on: .main, in: .common).autoconnect()
     
     var filteredTimeZones: [String] {
-        let identifiers = sortedIdentifiers
         if searchText.isEmpty {
-            return identifiers
+            return sortedIdentifiers
         } else {
-            let lower = searchText.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
-            let compactLower = lower.replacingOccurrences(of: " ", with: "")
-
-            return identifiers.filter { identifier in
-                let city = formatIdentifier(identifier).lowercased()
-                let gmt = gmtOffset(for: identifier).lowercased()
-                let compactGMT = gmt.replacingOccurrences(of: " ", with: "")
-                return identifier.lowercased().contains(lower)
-                    || city.contains(lower)
-                    || compactGMT.contains(compactLower)
-            }
+            return sortedIdentifiers.filter { SavedTimeZone.matchesSearch(identifier: $0, query: searchText, at: now) }
         }
     }
     
@@ -68,7 +39,7 @@ struct AddTimeZoneView: View {
                         VStack(alignment: .leading) {
                             HStack(spacing: 6) {
                                 Text(SavedTimeZone.flagEmoji(for: identifier))
-                                Text(formatIdentifier(identifier))
+                                Text(SavedTimeZone.cityName(for: identifier))
                             }
                             .font(.body)
                             Text(identifier)
@@ -92,7 +63,7 @@ struct AddTimeZoneView: View {
                         }
                         .buttonStyle(BorderedButtonStyle())
                         .padding(.leading, 8)
-                        .disabled(appGroupManager.savedTimeZones.contains(where: { $0.identifier == identifier }))
+                        .disabled(appGroupManager.containsTimeZone(identifier))
                     }
                     .padding(.vertical, 4)
                     .contentShape(Rectangle())
@@ -121,20 +92,19 @@ struct AddTimeZoneView: View {
             .padding()
         }
         .frame(minWidth: 360, minHeight: 360)
-    }
-    
-    private func formatIdentifier(_ identifier: String) -> String {
-        let components = identifier.split(separator: "/")
-        if let last = components.last {
-            return String(last).replacingOccurrences(of: "_", with: " ")
+        .onAppear {
+            reloadSortedIdentifiers()
         }
-        return identifier
+        .onReceive(refreshTimer) { date in
+            now = date
+            reloadSortedIdentifiers()
+        }
     }
     
     private func previewTime(for identifier: String) -> String {
         guard let tz = TimeZone(identifier: identifier) else { return "" }
         let formatter = DateFormatterCache.shortTimeFormatter(for: tz)
-        return formatter.string(from: timeManager.currentTime)
+        return formatter.string(from: now)
     }
     
     private func previewOffset(for identifier: String) -> String {
@@ -142,24 +112,15 @@ struct AddTimeZoneView: View {
     }
 
     private func gmtOffset(for identifier: String) -> String {
-        guard let tz = TimeZone(identifier: identifier) else { return "" }
-        let seconds = tz.secondsFromGMT(for: timeManager.currentTime)
-        let sign = seconds >= 0 ? "+" : "-"
-        let absolute = abs(seconds)
-        let hours = absolute / 3600
-        let minutes = (absolute % 3600) / 60
-
-        if minutes == 0 {
-            return "GMT\(sign)\(hours)"
-        }
-
-        return String(format: "GMT%@%d:%02d", sign, hours, minutes)
+        SavedTimeZone.gmtOffsetString(for: identifier, at: now)
     }
     
     private func addTimeZone(_ identifier: String) {
-        if !appGroupManager.savedTimeZones.contains(where: { $0.identifier == identifier }) {
-            appGroupManager.savedTimeZones.append(SavedTimeZone(identifier: identifier))
-            presentationMode.wrappedValue.dismiss()
-        }
+        guard appGroupManager.addTimeZone(identifier) else { return }
+        presentationMode.wrappedValue.dismiss()
+    }
+
+    private func reloadSortedIdentifiers() {
+        sortedIdentifiers = SavedTimeZone.sortedKnownTimeZoneIdentifiers(at: now)
     }
 }

@@ -35,15 +35,19 @@ struct MediumProvider: AppIntentTimelineProvider {
 
 private func makeTimeline(timeZones: [SavedTimeZone]) -> Timeline<SimpleEntry> {
     let currentDate = Date()
-    var entries: [SimpleEntry] = []
+    let entry = SimpleEntry(date: currentDate, timeZones: timeZones)
+    let nextUpdate = nextMinuteBoundary(after: currentDate)
+    return Timeline(entries: [entry], policy: .after(nextUpdate))
+}
 
-    for minuteOffset in 0 ..< 60 {
-        if let entryDate = Calendar.current.date(byAdding: .minute, value: minuteOffset, to: currentDate) {
-            entries.append(SimpleEntry(date: entryDate, timeZones: timeZones))
-        }
-    }
-
-    return Timeline(entries: entries, policy: .atEnd)
+private func nextMinuteBoundary(after date: Date) -> Date {
+    let calendar = Calendar.autoupdatingCurrent
+    return calendar.nextDate(
+        after: date,
+        matching: DateComponents(second: 0),
+        matchingPolicy: .nextTime,
+        direction: .forward
+    ) ?? date.addingTimeInterval(60)
 }
 
 struct SimpleEntry: TimelineEntry {

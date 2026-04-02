@@ -2,7 +2,6 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var appGroupManager: AppGroupManager
-    @EnvironmentObject var timeManager: TimeManager
     
     @State private var showingAddSheet = false
     
@@ -11,7 +10,6 @@ struct ContentView: View {
         .sheet(isPresented: $showingAddSheet) {
             AddTimeZoneView()
                 .environmentObject(appGroupManager)
-                .environmentObject(timeManager)
         }
     }
 }
@@ -81,11 +79,11 @@ private struct TimeZonesTabView: View {
     }
 
     private func moveTimeZones(from source: IndexSet, to destination: Int) {
-        appGroupManager.savedTimeZones.move(fromOffsets: source, toOffset: destination)
+        appGroupManager.moveTimeZones(from: source, to: destination)
     }
 
     private func deleteTimeZones(at offsets: IndexSet) {
-        appGroupManager.savedTimeZones.remove(atOffsets: offsets)
+        appGroupManager.removeTimeZones(at: offsets)
     }
 
     private func showToast(_ id: String, _ message: String) {

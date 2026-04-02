@@ -34,7 +34,6 @@ enum DateFormatterCache {
     private static var timeFormatters: [String: DateFormatter] = [:]
     private static var dateFormatters: [String: DateFormatter] = [:]
     private static var shortTimeFormatters: [String: DateFormatter] = [:]
-    private static var widgetTimeFormatters: [String: DateFormatter] = [:]
 
     static func timeFormatter(for zone: TimeZone, format: TimeFormat) -> DateFormatter {
         let key = "time|\(zone.identifier)|\(format.rawValue)"
@@ -56,29 +55,6 @@ enum DateFormatterCache {
         }
 
         timeFormatters[key] = formatter
-        return formatter
-    }
-
-    static func widgetTimeFormatter(for zone: TimeZone, format: TimeFormat) -> DateFormatter {
-        let key = "widget-time|\(zone.identifier)|\(format.rawValue)"
-        if let cached = widgetTimeFormatters[key] {
-            return cached
-        }
-
-        let formatter = DateFormatter()
-        formatter.timeZone = zone
-
-        switch format {
-        case .system:
-            formatter.dateStyle = .none
-            formatter.timeStyle = .short
-        case .format12h:
-            formatter.dateFormat = "h:mm a"
-        case .format24h:
-            formatter.dateFormat = "HH:mm"
-        }
-
-        widgetTimeFormatters[key] = formatter
         return formatter
     }
 

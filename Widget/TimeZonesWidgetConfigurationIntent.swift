@@ -93,7 +93,7 @@ struct TimeZoneEntity: AppEntity, Identifiable {
         let zone = SavedTimeZone(identifier: identifier)
         return DisplayRepresentation(
             title: "\(zone.flagEmoji) \(zone.cityName)",
-            subtitle: "\(gmtOffsetString(for: zone.timeZone)) • \(zone.identifier)"
+            subtitle: "\(SavedTimeZone.gmtOffsetString(for: zone.timeZone)) • \(zone.identifier)"
         )
     }
 }
@@ -104,7 +104,7 @@ struct TimeZoneEntityQuery: EntityStringQuery {
     }
 
     func suggestedEntities() async throws -> [TimeZoneEntity] {
-        let sorted = sortedIdentifiers(TimeZone.knownTimeZoneIdentifiers)
+        let sorted = SavedTimeZone.sortedKnownTimeZoneIdentifiers()
             .prefix(TimeZoneIntentConstants.suggestedLimit)
             .map { TimeZoneEntity(identifier: $0) }
 
@@ -117,7 +117,7 @@ struct TimeZoneEntityQuery: EntityStringQuery {
             return try await suggestedEntities()
         }
 
-        let compactLower = lower.replacingOccurrences(of: " ", with: "")
+        let now = Date()
         var leadingEntities: [TimeZoneEntity] = []
 
         if "clear".contains(lower) || "remove".contains(lower) || "delete".contains(lower) ||
@@ -126,58 +126,13 @@ struct TimeZoneEntityQuery: EntityStringQuery {
         }
 
         let matchedIdentifiers = TimeZone.knownTimeZoneIdentifiers.filter { identifier in
-            guard let timeZone = TimeZone(identifier: identifier) else { return false }
-
-            let city = identifier.split(separator: "/").last.map(String.init) ?? identifier
-            let cityNormalized = city.replacingOccurrences(of: "_", with: " ").lowercased()
-
-            let gmt = gmtOffsetString(for: timeZone).lowercased()
-            let gmtCompact = gmt.replacingOccurrences(of: " ", with: "")
-
-            return identifier.lowercased().contains(lower)
-                || cityNormalized.contains(lower)
-                || gmtCompact.contains(compactLower)
+            SavedTimeZone.matchesSearch(identifier: identifier, query: lower, at: now)
         }
 
-        let entities = sortedIdentifiers(matchedIdentifiers)
+        let entities = SavedTimeZone.sortedIdentifiers(matchedIdentifiers, at: now)
             .prefix(TimeZoneIntentConstants.suggestedLimit)
             .map { TimeZoneEntity(identifier: $0) }
 
         return leadingEntities + entities
     }
-
-    private func sortedIdentifiers<S: Sequence>(_ identifiers: S) -> [String] where S.Element == String {
-        let now = Date()
-        return identifiers
-            .filter { TimeZone(identifier: $0) != nil }
-            .sorted { lhs, rhs in
-                let lhsOffset = TimeZone(identifier: lhs)?.secondsFromGMT(for: now) ?? Int.max
-                let rhsOffset = TimeZone(identifier: rhs)?.secondsFromGMT(for: now) ?? Int.max
-                if lhsOffset != rhsOffset {
-                    return lhsOffset < rhsOffset
-                }
-
-                let lhsCity = SavedTimeZone(identifier: lhs).cityName
-                let rhsCity = SavedTimeZone(identifier: rhs).cityName
-                if lhsCity != rhsCity {
-                    return lhsCity < rhsCity
-                }
-
-                return lhs < rhs
-            }
-    }
-}
-
-private func gmtOffsetString(for timeZone: TimeZone, date: Date = Date()) -> String {
-    let seconds = timeZone.secondsFromGMT(for: date)
-    let sign = seconds >= 0 ? "+" : "-"
-    let absolute = abs(seconds)
-    let hours = absolute / 3600
-    let minutes = (absolute % 3600) / 60
-
-    if minutes == 0 {
-        return "GMT\(sign)\(hours)"
-    }
-
-    return String(format: "GMT%@%d:%02d", sign, hours, minutes)
 }

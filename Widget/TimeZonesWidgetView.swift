@@ -69,11 +69,7 @@ struct TimeZonesWidgetEntryView: View {
             }
 
         case .systemLarge, .systemExtraLarge:
-            LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 10) {
-                ForEach(entry.timeZones.prefix(4), id: \.id) { zone in
-                    WidgetZoneRow(zone: zone, date: entry.date, compact: false)
-                }
-            }
+            EmptyView()
 
         @unknown default:
             EmptyView()

@@ -9,12 +9,7 @@ struct SavedTimeZone: Identifiable, Codable, Equatable {
     }
     
     var cityName: String {
-        // Extract city name from identifier (e.g. "Europe/Belgrade" -> "Belgrade")
-        let components = identifier.split(separator: "/")
-        if let last = components.last {
-            return String(last).replacingOccurrences(of: "_", with: " ")
-        }
-        return identifier
+        Self.cityName(for: identifier)
     }
 
     var countryCode: String? {
@@ -46,6 +41,12 @@ struct SavedTimeZone: Identifiable, Codable, Equatable {
 }
 
 extension SavedTimeZone {
+    private struct SortKey {
+        let identifier: String
+        let city: String
+        let gmtOffset: Int
+    }
+
     private static let zoneTabPaths: [String] = [
         "/usr/share/zoneinfo/zone.tab",
         "/usr/share/zoneinfo/zone1970.tab"
@@ -65,6 +66,77 @@ extension SavedTimeZone {
             return flagEmoji(from: code)
         }
         return "🏳️"
+    }
+
+    static func cityName(for identifier: String) -> String {
+        let components = identifier.split(separator: "/")
+        if let last = components.last {
+            return String(last).replacingOccurrences(of: "_", with: " ")
+        }
+        return identifier
+    }
+
+    static func gmtOffsetString(for timeZone: TimeZone, at date: Date = Date()) -> String {
+        let seconds = timeZone.secondsFromGMT(for: date)
+        let sign = seconds >= 0 ? "+" : "-"
+        let absolute = abs(seconds)
+        let hours = absolute / 3600
+        let minutes = (absolute % 3600) / 60
+
+        if minutes == 0 {
+            return "GMT\(sign)\(hours)"
+        }
+
+        return String(format: "GMT%@%d:%02d", sign, hours, minutes)
+    }
+
+    static func gmtOffsetString(for identifier: String, at date: Date = Date()) -> String {
+        guard let zone = TimeZone(identifier: identifier) else { return "" }
+        return gmtOffsetString(for: zone, at: date)
+    }
+
+    static func sortedKnownTimeZoneIdentifiers(at date: Date = Date()) -> [String] {
+        sortedIdentifiers(TimeZone.knownTimeZoneIdentifiers, at: date)
+    }
+
+    static func sortedIdentifiers<S: Sequence>(_ identifiers: S, at date: Date = Date()) -> [String]
+    where S.Element == String {
+        let keyed = identifiers.compactMap { identifier -> SortKey? in
+            guard let zone = TimeZone(identifier: identifier) else { return nil }
+            return SortKey(
+                identifier: identifier,
+                city: cityName(for: identifier),
+                gmtOffset: zone.secondsFromGMT(for: date)
+            )
+        }
+
+        return keyed
+            .sorted { lhs, rhs in
+                if lhs.gmtOffset != rhs.gmtOffset {
+                    return lhs.gmtOffset < rhs.gmtOffset
+                }
+                if lhs.city != rhs.city {
+                    return lhs.city < rhs.city
+                }
+                return lhs.identifier < rhs.identifier
+            }
+            .map(\.identifier)
+    }
+
+    static func matchesSearch(identifier: String, query: String, at date: Date = Date()) -> Bool {
+        let loweredQuery = query.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
+        if loweredQuery.isEmpty {
+            return true
+        }
+
+        let compactQuery = loweredQuery.replacingOccurrences(of: " ", with: "")
+        let city = cityName(for: identifier).lowercased()
+        let gmt = gmtOffsetString(for: identifier, at: date).lowercased()
+        let compactGMT = gmt.replacingOccurrences(of: " ", with: "")
+
+        return identifier.lowercased().contains(loweredQuery)
+            || city.contains(loweredQuery)
+            || compactGMT.contains(compactQuery)
     }
 
     static func countryCode(for identifier: String) -> String? {

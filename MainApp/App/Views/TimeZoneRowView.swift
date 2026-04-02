@@ -89,7 +89,7 @@ struct TimeZoneRowView: View {
 
     private func deleteTimeZone() {
         withAnimation {
-            appGroupManager.savedTimeZones.removeAll { $0.id == savedZone.id }
+            appGroupManager.removeTimeZone(savedZone.id)
         }
     }
 }
